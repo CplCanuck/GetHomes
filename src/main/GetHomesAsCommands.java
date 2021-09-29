@@ -31,16 +31,29 @@ public class GetHomesAsCommands {
                File myReadFile = new File(("generated/" + myFileNames.get(i)));
                Scanner stdin = new Scanner(myReadFile);
                List<String> scrappedData = new ArrayList<String>();
+               Boolean hasParsedPlayerName = false;
 
                //Scrape Homes and Player's name
                while (stdin.hasNextLine()) {
                   String data = stdin.nextLine();
 
                   if(data.equals("    homes: {")){ //Checks if Scanner has reached the homes yet, if there are homes.
+                     //add first home
+                     data = stdin.nextLine().trim().replace("{", ""); //clean first home name
+                     scrappedData.add("\t" + data);
+
+                     //initialize and define executeCommand
                      String executeCommand = new String("/execute as @s in ");
 
                      while (stdin.hasNextLine() && !(data.equals("    loc: {"))) {
-                        data = stdin.nextLine();
+                        //adds rest of home names
+                        if(data.equals("        },")){
+                           data = stdin.nextLine().trim().replace("{", ""); //clean home name
+                           scrappedData.add("\t" + data);
+                        }
+                        else{
+                           data = stdin.nextLine();
+                        }
 
                         //adds dimension
                         if(data.contains("dim: \"")){
@@ -83,11 +96,16 @@ public class GetHomesAsCommands {
                               }
                            }
 
-                           scrappedData.add(executeCommand);
+                           scrappedData.add("\t\t\t" + executeCommand);
                            pos = "";
                            executeCommand = "/execute as @s in ";
                         }
                      }
+                  }
+                  else if(data.contains("name:") && hasParsedPlayerName == false){ //records player's name
+                     data = data.trim().replace("name: \"", "").replace("\",", ""); //clean player name
+                     scrappedData.add(0, data);
+                     hasParsedPlayerName = true;
                   }
                }
 
