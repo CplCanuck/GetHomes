@@ -1,0 +1,17 @@
+#windows
+.txt
+
+#java
+.class
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+#GetHomes
+generated/
+logs/
