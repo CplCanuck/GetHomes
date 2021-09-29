@@ -6,10 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-public class GetHomesWithNames { 
+public class GetHomes { 
   public static void main(String[] args) {
       try{
-         FileWriter myWriteFile = new FileWriter("homesWithNames.txt");
+         FileWriter myWriteFile = new FileWriter("homes.txt");
          List<String> myFileNames = new ArrayList<String>();
 
          //get all files from "generated" folder
