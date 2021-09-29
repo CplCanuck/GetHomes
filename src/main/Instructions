@@ -8,7 +8,7 @@ Steps:
 4. run convert.bat
 
 (Optional)
-5. run any of following:
-	GetHomes.class
-	GetHomesAsCommands.class
+5. compile and run any of following:
+	GetHomes.java
+	GetHomesAsCommands.java
 6. run delNBT.bat
