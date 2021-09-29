@@ -1,0 +1,14 @@
+Windows 10 only.
+
+Steps:
+1. Add a 1.17 minecraft server.jar to this directory called "server.jar"
+2. Place all your .dat files in the "player files" directory
+3. run copyToNBT.bat
+4. run convert.bat
+
+(Optional)
+5. run any of following:
+	GetHomes.class
+	GetHomesAsCommands.class
+	GetHomesWithNames.class
+6. run delNBT.bat
