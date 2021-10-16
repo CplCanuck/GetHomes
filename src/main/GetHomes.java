@@ -32,12 +32,14 @@ public class GetHomes {
                Scanner stdin = new Scanner(myReadFile);
                List<String> scrappedData = new ArrayList<String>();
                Boolean hasParsedPlayerName = false;
+               Boolean hasHome = false;
 
                //Scrape Homes and Player's name
                while (stdin.hasNextLine()) {
                   String data = stdin.nextLine();
 
                   if(data.equals("    homes: {")){ //Checks if Scanner has reached the homes yet, if there are homes.
+                     hasHome = true;
                      //add first home
                      data = stdin.nextLine().trim().replace("{", ""); //clean first home name
                      scrappedData.add("\t" + data);
@@ -96,7 +98,7 @@ public class GetHomes {
                         }
                      }
                   }
-                  else if(data.contains("name:") && hasParsedPlayerName == false){ //records player's name
+                  else if(data.contains("name:") && hasHome = true && hasParsedPlayerName == false){ //records player's name
                      data = data.trim().replace("name: \"", "").replace("\",", ""); //clean player name
                      scrappedData.add(0, data);
                      hasParsedPlayerName = true;
